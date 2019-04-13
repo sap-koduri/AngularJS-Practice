@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="./angular.js"></script>
+<script type="text/javascript" src="./myJs.js"></script>
+</head>
+<body ng-app = "myModule" >
+
+
+
+<table ng-controller="myFilterController">
+	<thead>
+		<tr>
+			<th>
+				Employee Name
+			</th>
+			<th>
+				Date Of Joining
+			</th>
+			<th>
+				Gender
+			</th>
+			<th>
+				Salary In Numbers
+			</th>
+			<th>
+				Salary in Currency
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="employee in employees | orderBy : '+name'">
+			<td>{{employee.name | uppercase}}</td>
+			<td>{{employee.doj | date : "dd/MM/yyyy"}}</td>
+			<td>{{employee.gender | lowercase}}</td>
+			<td>{{employee.salary | number}}</td>
+			<td>{{employee.salary | currency:"₹"}}</td>
+		</tr>
+	</tbody>
+</table>
+
+<br><br>
+
+	<table ng-controller="myController">
+	<thead>
+		<tr>
+			<th>Technology</th>
+			<th>Likes</th>
+			<th>DisLikes</th>
+			<th>Like</th>
+			<th>DisLike</th>
+		</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="technolgy in technologies">
+				<td> {{technolgy.name}}</td>
+				<td> {{technolgy.likes}}</td>
+				<td> {{technolgy.disLikes}}</td>
+				<td> <input type="button" value="Like" ng-click="incLikes(technolgy);"/></td>
+				<td><input type="button" value="DisLike" ng-click="incDisLikes(technolgy);"/></td>
+			</tr>
+		</tbody>
+	</table>
+
+</body>
+</html>
